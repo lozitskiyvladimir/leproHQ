@@ -1,8 +1,16 @@
-<h2>Comments: </h2>
-
+<h2>Post: </h2>
+</br>
 <%= @this_post.post%>
 </br>
+ <span style="font-size: 75%; color: #999">autor: <%= @this_post.autor%></span>
+ </br>
+  <span style="font-size: 75%; color: #999">created_at: <%= @this_post.created_at%></span>
 </br>
+</br>
+<hr/>
+<hr/>
+</br>
+<h2>Comments: </h2>
 </br>
 <% Comment.order("created_at DESC").each do |comment|%>
 
@@ -11,10 +19,10 @@
      <%= comment.comment%>
       </br>
       </br>
-      
-     autor: <%= comment.autor%>
+
+     <span style="font-size: 75%; color: #999">autor: <%= comment.autor%></span>
    </br>
-    created_at: <%= comment.created_at%>
+     <span style="font-size: 75%; color: #999">created_at: <%= comment.created_at%></span>
   </br>
   </br>
   <hr/>
@@ -29,5 +37,5 @@
 </br>
 <input name="autor" type="text" class="form-control" placeholder="your name">
 </br>
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

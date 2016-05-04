@@ -1,12 +1,13 @@
 <h2>Posts: </h2>
+</br>
 <% @posts.each do |post| %>
 <p>
 <%= post.post%>
 </br>
 </br>
-autor: <%= post.autor%>
+<span style="font-size: 75%; color: #999">autor: <%= post.autor%></span>
 </br>
-created at: <%= post.created_at%>
+<span style="font-size: 75%; color: #999">created at: <%= post.created_at%></span>
 </br>
 </br>
 <a href="/comments/<%= post.id%>">comments</a>
