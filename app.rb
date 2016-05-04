@@ -15,7 +15,7 @@ class Comment < ActiveRecord::Base
 end
 
 before do
-	@posts = Post.order('created_at DESC')
+	@posts = Post.order 'created_at DESC'
 end
 
 get '/main' do
@@ -38,4 +38,8 @@ end
 
 get '/posts' do
   erb :index
+end
+
+get '/comments/:post_id' do
+	erb :comments
 end
