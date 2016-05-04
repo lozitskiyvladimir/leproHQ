@@ -14,6 +14,9 @@ class Comment < ActiveRecord::Base
 
 end
 
+before do
+	@posts = Post.order('created_at DESC')
+end
 
 get '/main' do
   erb :index
