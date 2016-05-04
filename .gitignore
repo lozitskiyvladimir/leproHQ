@@ -1,2 +1,3 @@
 
 lepro.db
+db/migrate/20160430052011_create_posts.rb
