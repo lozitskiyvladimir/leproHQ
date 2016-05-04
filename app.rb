@@ -16,6 +16,7 @@ end
 
 before do
 	@posts = Post.order 'created_at DESC'
+
 end
 
 get '/main' do
@@ -40,6 +41,18 @@ get '/posts' do
   erb :index
 end
 
-get '/comments/:post_id' do
+get '/comments/:id' do
+	@this_post = Post.find params[:id]
 	erb :comments
+end
+
+post '/comments/:id' do
+	@content = params[:content]
+	@autor   = params[:autor]
+	@this_id = params[:id]
+
+	Comment.create :comment => @content, :autor => @autor, :posts_id => @this_id
+
+
+	redirect to('/comments/' + @this_id)
 end

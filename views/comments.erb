@@ -1,6 +1,30 @@
 <h2>Comments: </h2>
 
-<form action="/comments" method="POST">
+<%= @this_post.post%>
+</br>
+</br>
+</br>
+<% Comment.order("created_at DESC").each do |comment|%>
+
+  <% if comment.posts_id == @this_post.id %>
+    <p>
+     <%= comment.comment%>
+      </br>
+      </br>
+      
+     autor: <%= comment.autor%>
+   </br>
+    created_at: <%= comment.created_at%>
+  </br>
+  </br>
+  <hr/>
+   </p>
+  <% end%>
+
+<% end%>
+</br>
+</br>
+<form action="/comments/<%= @this_post.id%>" method="POST" >
   <textarea name="content" class="form-control" rows="6" placeholder="your comment"></textarea>
 </br>
 <input name="autor" type="text" class="form-control" placeholder="your name">
