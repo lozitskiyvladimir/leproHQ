@@ -10,20 +10,29 @@ class Post < ActiveRecord::Base
 		has_many :comments
 end
 
+class Comment < ActiveRecord::Base
+
+end
 
 
-get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"
+get '/main' do
+  erb :index
 end
 
 get '/new' do
-  erb "Hello World"
+	erb :new
 end
+
+post '/new' do
+	@post = params[:content]
+	@autor = params[:autor]
+
+	Post.create :post => @post, :autor => @autor
+
+	erb redirect "/main"
+end
+
 
 get '/posts' do
-  erb "Hello World"
-end
-
-get '/main' do
-  erb "Hello World"
+  erb :index
 end
