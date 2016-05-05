@@ -28,10 +28,8 @@ get '/new' do
 end
 
 post '/new' do
-	@post = params[:content]
-	@autor = params[:autor]
-
-	Post.create :post => @post, :autor => @autor
+	@c = Post.new params[:post]
+	@c.save
 
 	erb redirect "/main"
 end
@@ -46,13 +44,11 @@ get '/comments/:id' do
 	erb :comments
 end
 
-post '/comments/:id' do
-	@content = params[:content]
-	@autor   = params[:autor]
-	@this_id = params[:id]
+post '/comments/:posts_id' do
+	p = params[:comment]
+	p['posts_id'] = params[:posts_id]
+	@c = Comment.new params[:comment]
+	@c.save
 
-	Comment.create :comment => @content, :autor => @autor, :posts_id => @this_id
-
-
-	redirect to('/comments/' + @this_id)
+	redirect to('/comments/' + params[:posts_id])
 end

@@ -33,9 +33,9 @@
 </br>
 </br>
 <form action="/comments/<%= @this_post.id%>" method="POST" >
-  <textarea name="content" class="form-control" rows="6" placeholder="your comment"></textarea>
+  <textarea name="comment[comment]" class="form-control" rows="6" placeholder="your comment"></textarea>
 </br>
-<input name="autor" type="text" class="form-control" placeholder="your name">
+<input name="comment[autor]" type="text" class="form-control" placeholder="your name">
 </br>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
